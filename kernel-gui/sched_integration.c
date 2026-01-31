@@ -23,29 +23,58 @@
 /**
  * gui_sched_boost_task - Boost scheduling priority for a task
  * @task: Task to boost
- * @boost: Priority boost value
+ * @boost: Priority boost value (positive = higher priority, negative = lower)
  *
  * This function adjusts the task's scheduling priority to improve
  * responsiveness. For focused windows, we boost priority; for
  * minimized windows, we may reduce it.
+ *
+ * Uses set_user_nice() for SCHED_NORMAL tasks. The nice value is adjusted
+ * inversely to the boost value (higher boost = lower nice = higher priority).
  */
 static void gui_sched_boost_task(struct task_struct *task, int boost)
 {
+	int current_nice, target_nice;
+
 	if (!task)
 		return;
 
-	/*
-	 * In a full implementation, we would:
-	 * 1. Adjust task->prio based on boost value
-	 * 2. Use set_user_nice() or similar for SCHED_NORMAL tasks
-	 * 3. For real-time tasks, adjust rt_priority
-	 * 4. Wake up the scheduler to reconsider task placement
-	 *
-	 * For now, this is a placeholder that demonstrates the concept.
-	 */
+	/* Only adjust SCHED_NORMAL/SCHED_BATCH tasks, not RT tasks */
+	if (task->policy != SCHED_NORMAL && task->policy != SCHED_BATCH) {
+		pr_debug("GUI Sched: Skipping RT task %d (%s)\n",
+			 task->pid, task->comm);
+		return;
+	}
 
-	pr_debug("GUI Sched: Boosting task %d (%s) by %d\n",
-		 task->pid, task->comm, boost);
+	current_nice = task_nice(task);
+
+	/*
+	 * Calculate target nice value:
+	 * - boost > 0: decrease nice (increase priority)
+	 * - boost < 0: increase nice (decrease priority)
+	 * - boost = 0: restore to default (nice 0)
+	 *
+	 * We use the boost value directly as nice adjustment.
+	 * Nice values range from -20 (highest priority) to 19 (lowest).
+	 */
+	if (boost == 0) {
+		target_nice = 0;  /* Restore to default */
+	} else {
+		target_nice = -boost;  /* Invert: positive boost = negative nice */
+	}
+
+	/* Clamp to valid nice range */
+	if (target_nice < MIN_NICE)
+		target_nice = MIN_NICE;
+	if (target_nice > MAX_NICE)
+		target_nice = MAX_NICE;
+
+	/* Only adjust if there's a change */
+	if (current_nice != target_nice) {
+		set_user_nice(task, target_nice);
+		pr_debug("GUI Sched: Task %d (%s) nice %d -> %d (boost %d)\n",
+			 task->pid, task->comm, current_nice, target_nice, boost);
+	}
 }
 
 /**

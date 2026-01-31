@@ -1,0 +1,9 @@
+{
+    "uuid": "win11-shell@linux-desktop",
+    "name": "Windows 11 Shell",
+    "description": "Windows 11 style start menu, centered taskbar, and system tray",
+    "version": 1,
+    "shell-version": ["45", "46", "47"],
+    "url": "https://github.com/Marxist-Leninist/linux-desktop",
+    "settings-schema": "org.gnome.shell.extensions.win11-shell"
+}

@@ -70,3 +70,11 @@ all: deps build
 	@echo ""
 	@echo "=== All done! ==="
 	@echo "Log out and select GNOME at login to use."
+-e 
+# Theme installation
+theme:
+	./scripts/install-theme.sh
+
+# Full install
+install: deps build theme
+	@echo Full installation complete

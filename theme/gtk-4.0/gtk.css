@@ -1,0 +1,618 @@
+/* 
+ * Fluent GTK4 Theme
+ * Windows 11 inspired design for linux-desktop
+ * 
+ * Features:
+ * - Rounded corners (8px default, 12px for larger elements)
+ * - Mica/Acrylic transparency effects
+ * - Fluent Design shadows and depth
+ * - Windows 11 color palette
+ */
+
+/* ===== Color Definitions ===== */
+@define-color accent_color #0078D4;
+@define-color accent_hover #1a86d9;
+@define-color accent_active #006cbe;
+
+@define-color bg_color #f3f3f3;
+@define-color bg_dark #e5e5e5;
+@define-color bg_darker #d1d1d1;
+
+@define-color surface_color #ffffff;
+@define-color surface_hover #f9f9f9;
+@define-color surface_active #f0f0f0;
+
+@define-color text_color #1a1a1a;
+@define-color text_secondary #5c5c5c;
+@define-color text_disabled #a0a0a0;
+@define-color text_on_accent #ffffff;
+
+@define-color border_color #e0e0e0;
+@define-color border_subtle #ebebeb;
+
+@define-color error_color #c42b1c;
+@define-color warning_color #9d5d00;
+@define-color success_color #0f7b0f;
+
+/* Dark mode overrides */
+@define-color dark_bg_color #202020;
+@define-color dark_surface_color #2d2d2d;
+@define-color dark_text_color #ffffff;
+@define-color dark_border_color #3d3d3d;
+
+/* ===== Global Styles ===== */
+* {
+    outline: none;
+    -gtk-outline-radius: 8px;
+}
+
+window {
+    background-color: @bg_color;
+    color: @text_color;
+}
+
+/* ===== Rounded Corners - The Win11 Look ===== */
+window.background {
+    border-radius: 8px;
+}
+
+.background {
+    background-color: @bg_color;
+}
+
+/* ===== Mica Effect (subtle tinted transparency) ===== */
+.mica {
+    background-color: alpha(@surface_color, 0.8);
+}
+
+/* Acrylic (blur + tint) - compositor handles actual blur */
+.acrylic {
+    background-color: alpha(@surface_color, 0.7);
+}
+
+/* ===== Typography ===== */
+label {
+    color: @text_color;
+}
+
+label.dim-label {
+    color: @text_secondary;
+}
+
+label.title {
+    font-weight: 600;
+    font-size: 1.2em;
+}
+
+/* ===== Buttons ===== */
+button {
+    min-height: 32px;
+    min-width: 32px;
+    padding: 5px 16px;
+    border-radius: 4px;
+    border: 1px solid @border_color;
+    background-color: @surface_color;
+    background-image: none;
+    color: @text_color;
+    box-shadow: 0 1px 3px alpha(black, 0.08);
+    transition: all 100ms ease-out;
+}
+
+button:hover {
+    background-color: @surface_hover;
+    border-color: @border_color;
+}
+
+button:active {
+    background-color: @surface_active;
+    box-shadow: none;
+}
+
+button:disabled {
+    background-color: @bg_dark;
+    color: @text_disabled;
+    box-shadow: none;
+}
+
+/* Accent/Suggested buttons */
+button.suggested-action {
+    background-color: @accent_color;
+    color: @text_on_accent;
+    border-color: @accent_color;
+}
+
+button.suggested-action:hover {
+    background-color: @accent_hover;
+    border-color: @accent_hover;
+}
+
+button.suggested-action:active {
+    background-color: @accent_active;
+}
+
+/* Destructive buttons */
+button.destructive-action {
+    background-color: @error_color;
+    color: @text_on_accent;
+    border-color: @error_color;
+}
+
+/* Flat buttons */
+button.flat {
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: none;
+}
+
+button.flat:hover {
+    background-color: alpha(@text_color, 0.06);
+}
+
+/* Circular buttons */
+button.circular {
+    border-radius: 50%;
+    padding: 8px;
+}
+
+/* ===== Text Entries ===== */
+entry {
+    min-height: 32px;
+    padding: 0 12px;
+    border-radius: 4px;
+    border: 1px solid @border_color;
+    background-color: @surface_color;
+    color: @text_color;
+    caret-color: @accent_color;
+    transition: border-color 100ms ease-out;
+}
+
+entry:focus {
+    border-color: @accent_color;
+    border-bottom-width: 2px;
+    border-bottom-color: @accent_color;
+}
+
+entry:disabled {
+    background-color: @bg_dark;
+    color: @text_disabled;
+}
+
+/* ===== Spinbuttons ===== */
+spinbutton {
+    border-radius: 4px;
+    border: 1px solid @border_color;
+    background-color: @surface_color;
+}
+
+spinbutton entry {
+    border: none;
+    box-shadow: none;
+}
+
+/* ===== Checkboxes & Radios ===== */
+checkbutton, radiobutton {
+    padding: 4px;
+}
+
+check, radio {
+    min-width: 20px;
+    min-height: 20px;
+    border-radius: 4px;
+    border: 2px solid @text_secondary;
+    background-color: transparent;
+    transition: all 100ms ease-out;
+}
+
+radio {
+    border-radius: 50%;
+}
+
+check:hover, radio:hover {
+    border-color: @text_color;
+}
+
+check:checked, radio:checked {
+    background-color: @accent_color;
+    border-color: @accent_color;
+    color: @text_on_accent;
+}
+
+check:checked:hover, radio:checked:hover {
+    background-color: @accent_hover;
+    border-color: @accent_hover;
+}
+
+/* ===== Switches ===== */
+switch {
+    min-width: 46px;
+    min-height: 24px;
+    border-radius: 12px;
+    background-color: @bg_darker;
+    border: none;
+    transition: all 200ms ease-out;
+}
+
+switch:checked {
+    background-color: @accent_color;
+}
+
+switch slider {
+    min-width: 20px;
+    min-height: 20px;
+    border-radius: 50%;
+    background-color: @surface_color;
+    margin: 2px;
+    box-shadow: 0 1px 3px alpha(black, 0.2);
+}
+
+/* ===== Sliders/Scales ===== */
+scale {
+    min-height: 32px;
+}
+
+scale trough {
+    min-height: 4px;
+    border-radius: 2px;
+    background-color: @bg_darker;
+}
+
+scale highlight {
+    border-radius: 2px;
+    background-color: @accent_color;
+}
+
+scale slider {
+    min-width: 20px;
+    min-height: 20px;
+    border-radius: 50%;
+    background-color: @surface_color;
+    border: 2px solid @accent_color;
+    box-shadow: 0 1px 4px alpha(black, 0.2);
+}
+
+scale slider:hover {
+    background-color: @accent_color;
+}
+
+/* ===== Progress Bars ===== */
+progressbar trough {
+    min-height: 4px;
+    border-radius: 2px;
+    background-color: @bg_darker;
+}
+
+progressbar progress {
+    border-radius: 2px;
+    background-color: @accent_color;
+}
+
+/* Indeterminate animation */
+progressbar.horizontal progress {
+    background-image: linear-gradient(
+        to right,
+        transparent 0%,
+        @accent_color 50%,
+        transparent 100%
+    );
+}
+
+/* ===== Scrollbars ===== */
+scrollbar {
+    background-color: transparent;
+}
+
+scrollbar slider {
+    min-width: 8px;
+    min-height: 8px;
+    border-radius: 4px;
+    background-color: alpha(@text_color, 0.3);
+    margin: 2px;
+}
+
+scrollbar slider:hover {
+    background-color: alpha(@text_color, 0.5);
+}
+
+scrollbar slider:active {
+    background-color: alpha(@text_color, 0.7);
+}
+
+/* Overlay scrollbars */
+scrollbar.overlay-indicator slider {
+    min-width: 4px;
+}
+
+scrollbar.overlay-indicator:hover slider {
+    min-width: 8px;
+}
+
+/* ===== Lists & Rows ===== */
+list {
+    background-color: @surface_color;
+    border-radius: 8px;
+}
+
+row {
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 100ms ease-out;
+}
+
+row:hover {
+    background-color: @surface_hover;
+}
+
+row:selected {
+    background-color: alpha(@accent_color, 0.1);
+}
+
+row:selected:hover {
+    background-color: alpha(@accent_color, 0.15);
+}
+
+/* ===== Menus ===== */
+menu, popover {
+    padding: 4px;
+    border-radius: 8px;
+    background-color: @surface_color;
+    border: 1px solid @border_subtle;
+    box-shadow: 0 8px 32px alpha(black, 0.15);
+}
+
+menu > menuitem, popover modelbutton {
+    min-height: 32px;
+    padding: 4px 12px;
+    border-radius: 4px;
+}
+
+menu > menuitem:hover, popover modelbutton:hover {
+    background-color: @surface_hover;
+}
+
+/* ===== Popovers ===== */
+popover {
+    padding: 8px;
+}
+
+popover.background {
+    background-color: @surface_color;
+}
+
+popover > contents {
+    border-radius: 8px;
+}
+
+/* ===== Dialogs & Windows ===== */
+messagedialog {
+    background-color: @surface_color;
+}
+
+messagedialog .titlebar {
+    background-color: @surface_color;
+    border-bottom: none;
+}
+
+dialog {
+    border-radius: 12px;
+    background-color: @surface_color;
+    box-shadow: 0 24px 64px alpha(black, 0.2);
+}
+
+/* ===== Header Bars (Title Bars) ===== */
+headerbar {
+    min-height: 46px;
+    padding: 0 8px;
+    background-color: @bg_color;
+    border-bottom: 1px solid @border_subtle;
+    border-radius: 8px 8px 0 0;
+}
+
+headerbar:backdrop {
+    background-color: @bg_dark;
+}
+
+headerbar .title {
+    font-weight: 600;
+}
+
+/* Window controls */
+windowcontrols button {
+    min-width: 46px;
+    min-height: 32px;
+    border-radius: 0;
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+windowcontrols button:hover {
+    background-color: alpha(@text_color, 0.08);
+}
+
+windowcontrols button.close:hover {
+    background-color: @error_color;
+    color: @text_on_accent;
+}
+
+/* ===== Tabs ===== */
+notebook > header {
+    background-color: @bg_color;
+    border-bottom: 1px solid @border_color;
+}
+
+notebook > header > tabs > tab {
+    min-height: 32px;
+    padding: 4px 16px;
+    border-radius: 4px 4px 0 0;
+    margin: 4px 2px 0 2px;
+}
+
+notebook > header > tabs > tab:hover {
+    background-color: @surface_hover;
+}
+
+notebook > header > tabs > tab:checked {
+    background-color: @surface_color;
+    border-bottom: 2px solid @accent_color;
+}
+
+/* ===== Toolbars ===== */
+toolbar {
+    padding: 4px;
+    background-color: @bg_color;
+    border-bottom: 1px solid @border_subtle;
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+    background-color: @bg_color;
+    border-right: 1px solid @border_subtle;
+}
+
+.sidebar row {
+    padding: 8px 16px;
+}
+
+.sidebar row:selected {
+    background-color: alpha(@accent_color, 0.1);
+}
+
+/* ===== Cards ===== */
+.card {
+    background-color: @surface_color;
+    border-radius: 8px;
+    border: 1px solid @border_subtle;
+    box-shadow: 0 2px 8px alpha(black, 0.04);
+    padding: 16px;
+}
+
+/* ===== Toasts/Notifications ===== */
+.app-notification {
+    background-color: @surface_color;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px alpha(black, 0.15);
+    padding: 12px 16px;
+    margin: 12px;
+}
+
+/* ===== Tooltips ===== */
+tooltip {
+    border-radius: 4px;
+    background-color: @surface_color;
+    padding: 4px 8px;
+    box-shadow: 0 2px 8px alpha(black, 0.15);
+}
+
+/* ===== File Chooser ===== */
+placessidebar row {
+    border-radius: 4px;
+    padding: 4px 8px;
+}
+
+/* ===== Calendar ===== */
+calendar {
+    background-color: @surface_color;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+calendar:selected {
+    background-color: @accent_color;
+    color: @text_on_accent;
+    border-radius: 50%;
+}
+
+/* ===== Expanders ===== */
+expander {
+    padding: 4px;
+}
+
+expander title {
+    padding: 8px;
+    border-radius: 4px;
+}
+
+expander title:hover {
+    background-color: @surface_hover;
+}
+
+/* ===== InfoBars ===== */
+infobar {
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+infobar.info {
+    background-color: alpha(@accent_color, 0.1);
+}
+
+infobar.warning {
+    background-color: alpha(@warning_color, 0.1);
+}
+
+infobar.error {
+    background-color: alpha(@error_color, 0.1);
+}
+
+/* ===== Selection Mode ===== */
+.selection-mode headerbar {
+    background-color: @accent_color;
+    color: @text_on_accent;
+}
+
+/* ===== OSD (On-Screen Display) ===== */
+.osd {
+    background-color: alpha(@dark_surface_color, 0.9);
+    color: @dark_text_color;
+    border-radius: 8px;
+}
+
+/* ===== App-specific: Terminal ===== */
+.terminal-window {
+    background-color: #0c0c0c;
+}
+
+vte-terminal {
+    padding: 8px;
+}
+
+/* ===== Linked Widgets ===== */
+.linked > button {
+    border-radius: 0;
+}
+
+.linked > button:first-child {
+    border-radius: 4px 0 0 4px;
+}
+
+.linked > button:last-child {
+    border-radius: 0 4px 4px 0;
+}
+
+.linked > button:only-child {
+    border-radius: 4px;
+}
+
+/* ===== View/Content Areas ===== */
+.view {
+    background-color: @surface_color;
+}
+
+textview {
+    background-color: @surface_color;
+}
+
+textview text {
+    background-color: @surface_color;
+}
+
+/* ===== Navigation ===== */
+.navigation-sidebar {
+    background-color: @bg_color;
+    padding: 8px;
+}
+
+.navigation-sidebar row {
+    border-radius: 4px;
+    margin: 2px 0;
+}

@@ -1,0 +1,567 @@
+/*
+ * Fluent GNOME Shell Theme
+ * Windows 11 inspired shell styling
+ *
+ * Features:
+ * - Centered taskbar with pill-shaped background
+ * - Rounded corners everywhere
+ * - Mica/Acrylic effects
+ * - Windows 11 styled notifications
+ */
+
+/* ===== Stage (Desktop Background) ===== */
+stage {
+    font-family: "Segoe UI", "Inter", "Cantarell", sans-serif;
+    font-size: 10pt;
+    color: #1a1a1a;
+}
+
+/* ===== Top Panel - Windows 11 Style ===== */
+#panel {
+    background-color: transparent;
+    height: 48px;
+    font-weight: 500;
+}
+
+/* Panel background - centered pill */
+#panel .panel-corner {
+    -panel-corner-radius: 0;
+    -panel-corner-background-color: transparent;
+    -panel-corner-border-width: 0;
+    -panel-corner-border-color: transparent;
+}
+
+#panel .panel-button {
+    -natural-hpadding: 12px;
+    -minimum-hpadding: 8px;
+    color: #1a1a1a;
+    transition-duration: 150ms;
+}
+
+#panel .panel-button:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+    border-radius: 4px;
+}
+
+#panel .panel-button:active,
+#panel .panel-button:focus,
+#panel .panel-button:checked {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+/* System status area */
+#panel .panel-status-indicators-box {
+    spacing: 4px;
+}
+
+/* ===== Taskbar / Dash ===== */
+#dash {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 8px;
+    padding: 4px 8px;
+    margin: 0 0 8px 0;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* Dash background blur hint */
+#dash.mica {
+    background-color: rgba(243, 243, 243, 0.7);
+}
+
+/* App icons in taskbar */
+#dash .app-well-app {
+    padding: 4px;
+}
+
+#dash .app-well-app .overview-icon {
+    padding: 8px;
+    border-radius: 4px;
+    transition-duration: 100ms;
+}
+
+#dash .app-well-app:hover .overview-icon {
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+#dash .app-well-app:active .overview-icon {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Running app indicator */
+#dash .app-well-app.running .overview-icon {
+    border-bottom: 3px solid #0078D4;
+}
+
+#dash .app-well-app.focused .overview-icon {
+    background-color: rgba(0, 120, 212, 0.1);
+    border-bottom: 3px solid #0078D4;
+}
+
+/* Show apps button */
+#dash .show-apps {
+    padding: 8px;
+    border-radius: 4px;
+    margin-left: 4px;
+    border-left: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+#dash .show-apps:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+/* ===== Overview (Activities View) ===== */
+#overview {
+    spacing: 24px;
+}
+
+.overview-controls {
+    padding-bottom: 32px;
+}
+
+/* Workspace thumbnails */
+.workspace-thumbnails {
+    spacing: 16px;
+    padding: 16px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.workspace-thumbnail-indicator {
+    border: 2px solid #0078D4;
+    border-radius: 8px;
+}
+
+/* Window previews */
+.window-clone-border {
+    border-radius: 8px;
+    border: 2px solid rgba(0, 120, 212, 0.5);
+}
+
+.window-caption {
+    color: #1a1a1a;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 4px;
+    padding: 4px 12px;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== App Grid (Start Menu Apps) ===== */
+.app-folder {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 8px;
+}
+
+.app-folder-icon {
+    border-radius: 8px;
+}
+
+.app-well-app .overview-icon {
+    padding: 12px;
+}
+
+.icon-grid {
+    spacing: 16px;
+    -shell-grid-horizontal-item-size: 96px;
+    -shell-grid-vertical-item-size: 96px;
+}
+
+/* App labels */
+.app-well-app .overview-icon .overview-icon-label {
+    font-size: 9pt;
+    font-weight: 500;
+    color: #1a1a1a;
+}
+
+/* ===== Search ===== */
+#searchEntry {
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    padding: 8px 16px;
+    min-height: 40px;
+    color: #1a1a1a;
+    caret-color: #0078D4;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+#searchEntry:hover {
+    border-color: rgba(0, 0, 0, 0.12);
+}
+
+#searchEntry:focus {
+    border-color: #0078D4;
+    border-bottom-width: 2px;
+}
+
+/* Search results */
+.search-provider-icon {
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.search-provider-icon:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+.list-search-result {
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+.list-search-result:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+.list-search-result-title {
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.list-search-result-description {
+    color: #5c5c5c;
+}
+
+/* ===== Notifications - Windows 11 Style ===== */
+.notification-banner {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    padding: 16px;
+    margin: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.notification-banner:hover {
+    background-color: rgba(255, 255, 255, 0.98);
+}
+
+.notification-icon {
+    padding-right: 12px;
+}
+
+.notification-title,
+.notification-content {
+    color: #1a1a1a;
+}
+
+.notification-content {
+    color: #5c5c5c;
+}
+
+/* Notification actions */
+.notification-actions {
+    padding-top: 12px;
+    spacing: 8px;
+}
+
+.notification-button {
+    background-color: rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
+    padding: 6px 16px;
+    color: #1a1a1a;
+}
+
+.notification-button:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+/* ===== Calendar / Date Menu ===== */
+.calendar {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.calendar-month-label {
+    font-weight: 600;
+    font-size: 12pt;
+    color: #1a1a1a;
+    padding: 8px;
+}
+
+.calendar-day {
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-weight: 500;
+}
+
+.calendar-day:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+.calendar-today {
+    background-color: #0078D4;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.calendar-today:hover {
+    background-color: #1a86d9;
+}
+
+.calendar-day-heading {
+    color: #5c5c5c;
+    font-weight: 600;
+    font-size: 9pt;
+}
+
+/* ===== Quick Settings Menu ===== */
+.quick-settings {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 16px;
+    margin: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.quick-toggle {
+    background-color: rgba(0, 0, 0, 0.04);
+    border-radius: 8px;
+    padding: 12px;
+    min-width: 80px;
+}
+
+.quick-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+.quick-toggle:checked {
+    background-color: #0078D4;
+    color: #ffffff;
+}
+
+.quick-toggle:checked:hover {
+    background-color: #1a86d9;
+}
+
+.quick-toggle-label {
+    font-size: 9pt;
+    font-weight: 500;
+}
+
+/* Sliders in quick settings */
+.quick-slider {
+    padding: 8px 16px;
+}
+
+.quick-slider .slider {
+    height: 4px;
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0.1);
+    -slider-handle-radius: 8px;
+}
+
+/* ===== Message List (Notification Center) ===== */
+.message-list {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 8px;
+}
+
+.message-list-section-title {
+    font-weight: 600;
+    color: #5c5c5c;
+    padding: 8px 12px;
+}
+
+.message {
+    border-radius: 8px;
+    padding: 12px;
+    margin: 4px;
+}
+
+.message:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.message-title {
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.message-body {
+    color: #5c5c5c;
+}
+
+/* ===== OSD (Volume, Brightness, etc) ===== */
+.osd-window {
+    background-color: rgba(45, 45, 45, 0.9);
+    border-radius: 12px;
+    padding: 16px 24px;
+    color: #ffffff;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.osd-window .level {
+    height: 4px;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.osd-window .level-bar {
+    border-radius: 2px;
+    background-color: #0078D4;
+}
+
+/* ===== Screenshot UI ===== */
+.screenshot-ui-panel {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.screenshot-ui-type-button {
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.screenshot-ui-type-button:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+.screenshot-ui-type-button:checked {
+    background-color: #0078D4;
+    color: #ffffff;
+}
+
+/* ===== Dialogs ===== */
+.modal-dialog {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
+}
+
+.modal-dialog-title {
+    font-size: 14pt;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.modal-dialog-content {
+    color: #5c5c5c;
+}
+
+.modal-dialog-button-box {
+    spacing: 12px;
+}
+
+.modal-dialog-button {
+    background-color: rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
+    padding: 8px 24px;
+    min-height: 32px;
+    color: #1a1a1a;
+}
+
+.modal-dialog-button:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+.modal-dialog-button:default {
+    background-color: #0078D4;
+    color: #ffffff;
+}
+
+.modal-dialog-button:default:hover {
+    background-color: #1a86d9;
+}
+
+/* ===== Login/Lock Screen ===== */
+.login-dialog,
+.unlock-dialog {
+    background-color: transparent;
+}
+
+.login-dialog-prompt-layout {
+    padding: 32px;
+}
+
+.login-dialog-prompt-label {
+    color: #ffffff;
+    font-size: 24pt;
+    font-weight: 300;
+}
+
+.login-dialog-prompt-entry {
+    background-color: rgba(255, 255, 255, 0.15);
+    border: none;
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: #ffffff;
+}
+
+.login-dialog-prompt-entry:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Clock on lock screen */
+.unlock-dialog-clock {
+    font-size: 64pt;
+    font-weight: 200;
+    color: #ffffff;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== Switcher Popups (Alt+Tab) ===== */
+.switcher-popup {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.switcher-list {
+    spacing: 8px;
+}
+
+.switcher-list-item-container {
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.switcher-list-item-container:selected {
+    background-color: rgba(0, 120, 212, 0.1);
+}
+
+.thumbnail {
+    border-radius: 8px;
+}
+
+/* ===== Workspace Switcher Popup ===== */
+.workspace-switcher {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.ws-switcher-box {
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.ws-switcher-active-up, .ws-switcher-active-down {
+    background-color: #0078D4;
+    border-radius: 8px;
+}
+
+/* ===== Ripple Effects ===== */
+.ripple-box {
+    background-color: rgba(0, 120, 212, 0.3);
+    border-radius: 50%;
+}
+
+/* ===== Looking Glass (Debug) ===== */
+#LookingGlassDialog {
+    background-color: rgba(32, 32, 32, 0.95);
+    border-radius: 12px;
+    padding: 16px;
+}

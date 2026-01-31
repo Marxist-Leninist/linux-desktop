@@ -1,0 +1,212 @@
+/* Win11 Shell Extension Stylesheet */
+
+/* ===== Taskbar ===== */
+.taskbar {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 8px;
+    padding: 4px 12px;
+    margin: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.taskbar-start-button {
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-right: 8px;
+}
+
+.taskbar-start-button:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+.taskbar-start-button:active {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.taskbar-separator {
+    width: 1px;
+    height: 24px;
+    margin: 4px 8px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.taskbar-icons {
+    spacing: 2px;
+}
+
+.taskbar-icon {
+    padding: 6px 8px;
+    border-radius: 4px;
+    transition-duration: 100ms;
+}
+
+.taskbar-icon:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+.taskbar-icon:active {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.taskbar-icon.focused {
+    background-color: rgba(0, 120, 212, 0.15);
+}
+
+.taskbar-icon.focused:hover {
+    background-color: rgba(0, 120, 212, 0.2);
+}
+
+.taskbar-running-dot {
+    width: 6px;
+    height: 3px;
+    border-radius: 1.5px;
+    background-color: #0078D4;
+    margin-top: 4px;
+}
+
+/* ===== Start Menu ===== */
+.start-menu {
+    width: 640px;
+    min-height: 720px;
+}
+
+.start-menu-background {
+    background-color: rgba(243, 243, 243, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 32px 64px rgba(0, 0, 0, 0.24);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.start-menu-container {
+    padding: 32px;
+    spacing: 20px;
+}
+
+.start-menu-search {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 10px 20px;
+    min-height: 36px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    color: #1a1a1a;
+}
+
+.start-menu-search:hover {
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.start-menu-search:focus {
+    border-color: #0078D4;
+    border-bottom-width: 2px;
+}
+
+.start-menu-search StEntry {
+    caret-color: #0078D4;
+}
+
+.start-menu-section-label {
+    font-weight: 600;
+    font-size: 13px;
+    color: #1a1a1a;
+    margin-top: 12px;
+    margin-bottom: 4px;
+}
+
+.start-menu-grid {
+    margin: 12px 0;
+}
+
+.start-menu-app {
+    padding: 16px 12px;
+    border-radius: 8px;
+    min-width: 88px;
+    transition-duration: 100ms;
+}
+
+.start-menu-app:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.start-menu-app:active {
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+.start-menu-app-box {
+    spacing: 8px;
+}
+
+.start-menu-app-label {
+    font-size: 11px;
+    font-weight: 500;
+    text-align: center;
+    color: #1a1a1a;
+    max-width: 80px;
+}
+
+.start-menu-all-apps {
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 12px;
+    color: #1a1a1a;
+    margin-left: auto;
+}
+
+.start-menu-all-apps:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.start-menu-recommended {
+    spacing: 4px;
+}
+
+.start-menu-recent-item {
+    padding: 10px 16px;
+    border-radius: 8px;
+    spacing: 12px;
+}
+
+.start-menu-recent-item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.start-menu-recent-name {
+    font-weight: 500;
+    font-size: 12px;
+    color: #1a1a1a;
+}
+
+.start-menu-recent-desc {
+    font-size: 11px;
+    color: #5c5c5c;
+}
+
+.start-menu-user {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    spacing: 12px;
+}
+
+.start-menu-username {
+    font-weight: 500;
+    font-size: 13px;
+    color: #1a1a1a;
+}
+
+.start-menu-power {
+    margin-left: auto;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.start-menu-power:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+/* ===== Blur hint for compositor ===== */
+.blur-effect {
+    -gtk-icon-filter: blur(20px);
+}

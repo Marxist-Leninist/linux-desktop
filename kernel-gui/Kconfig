@@ -1,0 +1,96 @@
+# SPDX-License-Identifier: GPL-2.0-only
+#
+# GUI Compositor Configuration
+#
+
+menuconfig GUI_COMPOSITOR
+	bool "Modern GUI Compositor Support"
+	depends on DRM
+	help
+	  Enable kernel-level support for modern GUI compositing with
+	  Windows 11-like visual effects and tight integration with
+	  kernel subsystems.
+
+	  This provides APIs for:
+	  - Window management with kernel hints
+	  - Hardware-accelerated visual effects (blur, shadows, rounded corners)
+	  - Low-latency input routing
+	  - GUI-aware CPU scheduling
+	  - Frame pacing and vsync management
+
+	  If unsure, say N.
+
+if GUI_COMPOSITOR
+
+config GUI_HW_EFFECTS
+	bool "Hardware-accelerated visual effects"
+	default y
+	depends on DRM_KMS_HELPER
+	help
+	  Enable hardware-accelerated support for modern visual effects
+	  such as:
+	  - Acrylic and Mica materials (blur + tint)
+	  - Drop shadows with real-time rendering
+	  - Rounded corner clipping
+	  - Multi-layer alpha blending
+
+	  This requires GPU support for the necessary shaders and
+	  composition operations.
+
+config GUI_SCHED_INTEGRATION
+	bool "Integrate GUI hints with CPU scheduler"
+	default y
+	depends on SCHED_CORE
+	help
+	  Allow the GUI compositor to provide hints to the CPU scheduler
+	  to boost priority of focused window tasks for better
+	  responsiveness.
+
+	  This gives focused applications higher CPU priority and
+	  reduces their scheduling latency.
+
+config GUI_INPUT_LOWLATENCY
+	bool "Low-latency input path for GUI"
+	default y
+	depends on INPUT
+	help
+	  Optimize input event routing for GUI applications by providing
+	  a fast path for touch, mouse, and keyboard input directly to
+	  the focused window.
+
+	  This reduces input-to-display latency for better responsiveness.
+
+config GUI_GESTURE_RECOGNITION
+	bool "Kernel-level gesture recognition"
+	default y
+	depends on INPUT_TOUCHSCREEN
+	help
+	  Implement gesture recognition (swipes, pinches, rotations) at
+	  the kernel level for lower latency and better accuracy.
+
+	  Windows 11-style gestures:
+	  - Three-finger swipe for task switching
+	  - Four-finger pinch for show desktop
+	  - Edge swipes for system UI
+
+config GUI_FRAME_PACING
+	bool "Kernel-managed frame pacing"
+	default y
+	depends on DRM && HIGH_RES_TIMERS
+	help
+	  Enable kernel-managed frame pacing for smooth, tear-free
+	  rendering with predictable frame times.
+
+	  This coordinates vsync timing across all applications for
+	  optimal visual quality.
+
+config GUI_DEBUG
+	bool "GUI subsystem debugging"
+	default n
+	help
+	  Enable debugging output and additional checks in the GUI
+	  compositor subsystem.
+
+	  If unsure, say N.
+
+endif # GUI_COMPOSITOR
